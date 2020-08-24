@@ -21,7 +21,7 @@ public class FvckTikTokBot extends TelegramLongPollingBot {
     }
 
     private void updateImpl(Update update) {
-        if (update.hasMessage() && update.getMessage().hasText() && update.getMessage().getText().contains("tiktok")) {
+        if (update.hasMessage() && update.getMessage().hasText() && update.getMessage().getText().toLowerCase().contains("tiktok")) {
             long chatId = update.getMessage().getChatId();
             int messageId = update.getMessage().getMessageId();
             System.out.println(update.getMessage().getText());
@@ -31,7 +31,6 @@ public class FvckTikTokBot extends TelegramLongPollingBot {
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
-            System.out.println("Success");
         }
     }
 
@@ -52,7 +51,7 @@ public class FvckTikTokBot extends TelegramLongPollingBot {
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
-        System.out.printf("Your KEY is %s", returnable);
+        System.out.printf("Your KEY is %s \n", returnable);
         return returnable;
     }
 }
